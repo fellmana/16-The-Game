@@ -2,7 +2,7 @@
 
 ## Sovelluksen esittely
 16TheGame peli sovellus perustuu vanhaan pasianssityyliseen peliin. Pelissä on palikoita jotka ovat numeroitu 1-16 ja jokaista numeroa on 6 kappaletta. Palikoita nostetaan ruukusta yksi kerrallaan ja sijoitetaan pelialustalle, jossa niitä voidaan manipuloida pasianssityylisten pelisääntöjen tapaisesti. 
-Tarkemmat pelisäännot ovat tulossa ja löytyvät seuraavan linkin takaa, [Pelisäännöt](https://www.google.com).
+Tarkemmat pelisäännot ovat tulossa ja löytyvät seuraavan linkin takaa, [Pelisäännöt](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/rules.md).
 
 
 ## Käyttäjät
