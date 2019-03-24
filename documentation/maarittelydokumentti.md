@@ -53,7 +53,7 @@ Sovellus toteutuskieli on englanti, mutta säännöt kirjoitetaan myös suomeksi
 	- Kieli valikko tai valinta mahdollisuus
 
 ## Jatkokehitysideoita
-* Ns. huijausmekanismi, jolloin jos ett onnistu saamaan peliä loppuun voit suorittaa huijaussiirtoja.
+* Ns. huijausmekanismi, jolla jos et onnistu saamaan peliä loppuun voit suorittaa huijaussiirtoja.
 * Mahdollinen 'replay' järjestelmän jonka avulla voidaan pelata sama järjestys uudelleen.
-* Mahdolliset variaation esim. useampi 'kaista'.  
+* Mahdolliset variaatiot esim. useampi 'kaista'.  
 * Kehittää jonku näköinen highscore järjestelmä vaikkakin pelissä ei ole minkään näköistä pisteytystä, ehkä perustuu aikaan 
