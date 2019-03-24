@@ -52,6 +52,18 @@ Sovellus toteutuskieli on englanti, mutta säännöt kirjoitetaan myös suomeksi
 	- Tekstilaatikko jossa ohjeet on selkeästi luettavissa
 	- Kieli valikko tai valinta mahdollisuus
 
+## Pelin Tekninentoiminta ja toteutus
+* Ruukku (käytännössä lista) jossa palikat ovat (elementtejä listassa)
+* Ruukkua klikkaamalla satunnainen elementti listasta valitaan ja annetaan pelaajan käyttöön ja poistetaan ruukusta
+* Pelaaja sijoittaa elementin pelikaistoille (Nämä ovat myös listoja) 
+* Siirto kaistalta kaistalle:
+	- Siirrettävät elementit on oltava järjestyksessä (eng. Sorted) jotta siirto on sallittu
+	- Jotta siirrettävät elementit voidaan sijoittaan on tarkistettava onko kaista tyhjä tai onko sen viimeinen elementti sääntöjen mukainen 
+* Pinot: 
+	- pinot ovat listoja joiden elementit on pakko lisätä (append) oikeassa järjestyksessä 
+	- sallii vain yhden kappaleen tiettyä palikkaa
+	- Kun kaikki pinot taynnä tarkistaa onko voitto ehto täyttynyt jos ei niin hävisit pelin
+
 ## Jatkokehitysideoita
 * Ns. huijausmekanismi, jolla jos et onnistu saamaan peliä loppuun voit suorittaa huijaussiirtoja.
 * Mahdollinen 'replay' järjestelmän jonka avulla voidaan pelata sama järjestys uudelleen.
