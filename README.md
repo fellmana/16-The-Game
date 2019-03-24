@@ -9,7 +9,7 @@ Hei tämä on **minun** harjoitustyö kurssille *ohjelmistotekniikka*
 
 
 ## Viikko2
-
+toisen viikon palautukset löytyväät hakemistosta  [laskarit/viikko2](https://github.com/fellmana/ot-harjoitustyo/tree/master/laskarit/viikko2) 
 
 ## 16 The Game
 1. [Määrittelydokumentti](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/maarittelydokumentti.md)
