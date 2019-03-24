@@ -1,10 +1,8 @@
 # Määrittelydokumentti  16TheGame
 
 ## Sovelluksen esittely
-16TheGame peli sovellus perustuu vanhaan pasianssityyliseen peliin. Pelissä on palikoita jotka ovat numeroitu 1-16 ja jokaista numeroa on 6 kappaletta. Palikoita nostetaan ruukusta yksi kerrallaan ja sijoitetaan pelialustalle, jossa niitä voidaan manipuloida pasianssityylisten pelisääntöjen tapaisesti. 
-Tarkemmat pelisäännot ovat tulossa ja löytyvät seuraavan linkin takaa, [Pelisäännöt](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/rules.md).
-
-
+16TheGame pelisovellus perustuu vanhaan pasianssityyliseen peliin. Pelissä on palikoita jotka ovat numeroitu 1-16 ja jokaista numeroa on 6 kappaletta. Palikoita nostetaan ruukusta yksi kerrallaan ja sijoitetaan pelialustalle, jossa niitä voidaan manipuloida pasianssityylisten pelisääntöjen tapaisesti. 
+Tarkemmat pelisäännot ovat tulossa ja tulevat löytyymään seuraavan linkin takaa, [Pelisäännöt](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/rules.md). Pelistä ei ikäväkyllä löydy oikeiastaan mitään ulkoisia viitteitä ja se on  osittain joutunut unohduksiin. Ainoa viittaus peliin minkä löysin oli kuva [Zacharias Topeliuksesta pelaamassa peliä 1800 luvulta.](https://www.finna.fi/Record/sls.SLSA+801_SLSA+801_29).
 ## Käyttäjät
 Sovelluksessa ei ole erityisiä käyttäjiä sen luonteen takia, joten kaikki ovat sovelluksen normaalikäyttäjiä.
 
@@ -19,7 +17,7 @@ Sovelluksessa on kolme eri näkymää.
 
 
 ## Sovelluksen tarjoamat toiminnallisuudet
-Sovellus toteutus kieli on englanti mutta sännöt kirjoitetaan myös suomeksi
+Sovellus toteutus kieli on englanti mutta säännöt kirjoitetaan myös suomeksi ja todennäköisesti ruotsiksi.
 
 ### Valikko
 * Valikossa on 4 eri toimintoa
