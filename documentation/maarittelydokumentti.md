@@ -15,7 +15,7 @@ Sovelluksessa on kolme eri näkymää.
 3. Pelinäkymä
 
 
-lisää kuva eri näkymistä
+![alt text](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/figures/maaritelma-fig1.png)
 
 
 ## Sovelluksen tarjoamat toiminnallisuudet
