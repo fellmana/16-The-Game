@@ -4,7 +4,14 @@ Hei tämä on **minun** harjoitustyö kurssille *ohjelmistotekniikka*
 ## Tehtävät
 
 ## Viikko1
-1. [gitlog.txt](https://github.com/fellmana/ot-harjoitustyo/blob/master/gitlog.txt)
-1. [komentorivi.txt](https://github.com/fellmana/ot-harjoitustyo/blob/master/komentorivi.txt)
+1. [gitlog.txt](https://github.com/fellmana/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+1. [komentorivi.txt](https://github.com/fellmana/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
-Moi 
+
+## Viikko2
+
+
+## 16 The Game
+1. [Määrittelydokumentti](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/maarittelydokumentti.md)
+1. [työaikakirjanpito](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/tyoaikakirjanpito.md)
+
