@@ -2,7 +2,7 @@
 
 ## 16 The Game
 
-16 The Game on peli sovellus joka on tietokone implementaatio klassisesta 1800-luvun pasianssi pelistä.
+16 The Game on peli sovellus joka on tietokone implementaatio klassisesta 1800-luvun pasianssipelistä. 
 
 
 ## Dokumentaatio
@@ -15,4 +15,10 @@
 
 ### ohjelman ajaminen
 Komentorivissä ohjelman ajaminen on suoritettu esimerkiksi komennolla 
-`mvn compile exec:java -Dexec.mainClass=thegame.thegame.Game` 
+  `mvn compile exec:java -Dexec.mainClass=thegame.thegame.Game` 
+### Testaaminen 
+Ohjelman Testaamista varten voidaan sen juurihakemistossa suorittaa seuraava komento  `mvn test `
+
+  Lisäksi voidaan testikattavuus raportti luoda seuraavalla komennolla  
+`mvn test jacoco:report `
+### 
