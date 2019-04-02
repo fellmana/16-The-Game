@@ -5,23 +5,18 @@
  */
 package thegame.thegame;
 
+import javafx.scene.control.Button;
+
 /**
  *
  * @author afellman
  */
-public class Brick {
-    private int value;
+public class RulesScene {
+
+    Button BackToMenuButton2; 
     
-    public Brick(int val){
-        this.value = val; 
-    }
-    
-    public int getValue(){
-        return value;
-    }
-    
-    public String toString(){
-        return  "Value of the Brick: " + value;
+    public RulesScene() {
+        this.BackToMenuButton2 = new Button("Main Menu");
     }
     
 }
