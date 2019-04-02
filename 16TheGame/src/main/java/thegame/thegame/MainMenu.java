@@ -5,7 +5,6 @@
  */
 package thegame.thegame;
 
-
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -13,17 +12,20 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
+
 /**
  *
  * @author afellman
  */
 public class MainMenu {
-      private  int MainMenuButtonWidth;
-      private  int MainMenuButtonHeight;
-      private Button NewGameButton;
-      private Button LoadGameButton;
-      private Button RulesButton;
-      private Button ExitButton;      
+
+    private int MainMenuButtonWidth;
+    private int MainMenuButtonHeight;
+    private Button NewGameButton;
+    private Button LoadGameButton;
+    private Button RulesButton;
+    private Button ExitButton;
+
     public MainMenu() {
         this.MainMenuButtonWidth = 600;
         this.MainMenuButtonHeight = 80;
@@ -48,9 +50,8 @@ public class MainMenu {
     public Button getExitButton() {
         return ExitButton;
     }
-    
-    
-    public BorderPane buildMenu(){
+
+    public BorderPane buildMenu() {
 
         //  Title
         Label TitleText = new Label("16 The Game");
@@ -90,10 +91,8 @@ public class MainMenu {
         MainMenuPanel.setTop(TitleText);
         MainMenuPanel.setAlignment(TitleText, Pos.TOP_CENTER);
         MainMenuPanel.setMargin(TitleText, new Insets(100, 0, -30, 0));
+
         return MainMenuPanel;
     }
 
-
-      
-    
 }

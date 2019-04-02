@@ -55,12 +55,6 @@ public class Game extends Application {
         GameWindowPanel.setMargin(GameWindowBox, new Insets(5, 5, 5, 5));
 
         //
-        //  Rules Scene setup
-        //
-        Button BackToMenuButton2 = new Button("Main Menu");
-
-
-        //
         //  Setting up different scenes
         //
         
@@ -91,7 +85,7 @@ public class Game extends Application {
         BackToMenuButton1.setOnAction((event) -> {
             Window.setScene(MainMenu);
         });
-        BackToMenuButton2.setOnAction((event) -> {
+        RuleScene.getBackToMenuButton2().setOnAction((event) -> {
             Window.setScene(MainMenu);
         });
 
