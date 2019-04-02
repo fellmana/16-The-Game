@@ -59,6 +59,7 @@ public class MainMenu {
         //
         //  Formatting of MainMenu
         //
+        
         NewGameButton.setPrefHeight(MainMenuButtonHeight);
         NewGameButton.setPrefWidth(MainMenuButtonWidth);
         NewGameButton.setStyle(String.format("-fx-font-size: %dpx;", (int) (0.45 * MainMenuButtonHeight)));
