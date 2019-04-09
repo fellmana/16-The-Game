@@ -10,8 +10,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import thegame.thegame.Brick;
-import thegame.thegame.Urn;
+import thegame.domain.Brick;
+import thegame.domain.Urn;
 
 /**
  *
@@ -38,15 +38,16 @@ public class UrnTest {
     @Test
     public void UrnDrawReducesAmount() {
         urn.InitializeUrn();
-        urn.Draw();
+        urn.draw();
         assertEquals(95, urn.getLength());
     }
     
     @Test
     public void UrnDrawGivesABrick(){
         urn.InitializeUrn();
-        Brick b =  urn.Draw();
+        Brick b =  urn.draw();
         assertNotEquals(null, b);
     }
+    
 
 }

@@ -10,3 +10,6 @@ Päivä | aika | Mitä tein
 1.4 |  2 | yksinkertaisen käyttöliittymän luonti
 1.4 |  2 | Alustava Ruukkutoiminnallisuus + Testi sille
 2.4 |  2 | Käyttöliittymän parantelu + maven debuggailua
+7.4 |  1 | käyttöliittymän parantelu + alustettu erottelu logiikan ja käyttöliittymän välille (ei valmis)
+8.4 |  6 | Palikoiden asettelu kaistoille nyt mahdollista mutta se ei vielä toteuta mitään pelilogiikkaa.
+9.4 |  2 | Testauksien luominen ja hieman koodin siistimistä(paljon jäljellä)
