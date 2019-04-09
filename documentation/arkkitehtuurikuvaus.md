@@ -1,4 +1,0 @@
-# Arkkitehtuurikuvaus 
-
-## Rakenne
-
