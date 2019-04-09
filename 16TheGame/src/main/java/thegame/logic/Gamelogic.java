@@ -89,16 +89,16 @@ public class Gamelogic {
             } else {
                 switch (n) {
                     case 1:
-                        outlane.initBricks(lane1.getBricks(lane1.getLength()-sel.getLength(),lane1.getLength()));
+                        outlane.initBricks(lane1.getBricks(lane1.getLength() - sel.getLength(), lane1.getLength()));
                         break;
                     case 2:
-                        outlane.initBricks(lane2.getBricks(lane2.getLength()-sel.getLength(),lane2.getLength()));
+                        outlane.initBricks(lane2.getBricks(lane2.getLength() - sel.getLength(), lane2.getLength()));
                         break;
                     case 3:
-                        outlane.initBricks(lane3.getBricks(lane3.getLength()-sel.getLength(),lane3.getLength()));
+                        outlane.initBricks(lane3.getBricks(lane3.getLength() - sel.getLength(), lane3.getLength()));
                         break;
                     default:
-                        outlane.initBricks(lane4.getBricks(lane4.getLength()-sel.getLength(),lane4.getLength()));
+                        outlane.initBricks(lane4.getBricks(lane4.getLength() - sel.getLength(), lane4.getLength()));
                         break;
                 }
             }
