@@ -13,3 +13,7 @@ Päivä | aika | Mitä tein
 7.4 |  1 | käyttöliittymän parantelu + alustettu erottelu logiikan ja käyttöliittymän välille (ei valmis)
 8.4 |  6 | Palikoiden asettelu kaistoille nyt mahdollista mutta se ei vielä toteuta mitään pelilogiikkaa.
 9.4 |  2 | Testauksien luominen ja hieman koodin siistimistä(paljon jäljellä)
+16.4|  3 | Suuria ongelmia palikoiden käsittelyssä, en käsitä javafx:ää.
+18.4 | 8 | Ongelma ratkaistu (Brick extends button) halleluja
+20.4 | 4 | Suuria edistyksiä pelin toiminnassa, :)
+21.4 | 6 | Ensimmäinen pelattava versio, joka toimii kaikki peruspelisäännöt toteutettu 
