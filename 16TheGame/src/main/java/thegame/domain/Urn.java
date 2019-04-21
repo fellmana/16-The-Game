@@ -32,7 +32,7 @@ public class Urn {
     }
 
     public Brick draw() {
-        int randomNum = 1 + (int) (Math.random() * this.getLength());
+        int randomNum = 0 + (int) (Math.random() * this.getLength());
         Brick chosen = bricks.get(randomNum);
         bricks.remove(randomNum);
         return chosen;

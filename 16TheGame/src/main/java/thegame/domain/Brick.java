@@ -5,15 +5,53 @@
  */
 package thegame.domain;
 
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author afellman
  */
-public class Brick {
+public class Brick extends Button {
+    
     private int value;
+    private int lanenum;
+    private int index;
     
     public Brick(int val) {
         this.value = val;
+        String str = "";        
+        this.setPrefHeight(80 * 0.8);
+        this.setPrefWidth(80 * 0.8);
+        this.setText(str);
+        String file = "/b" + this.value + ".png";     
+        ImageView img = new ImageView();
+        img.setImage(new Image(getClass().getResourceAsStream(file)));
+        img.setFitHeight(80 * 0.8);
+        img.setFitWidth(80 * 0.8);
+        super.setGraphic(img);
+    }
+    
+    public void setLanenum(int lanenum) {
+        this.lanenum = lanenum;
+    }
+    
+    public void setIndex(int index) {
+        this.index = index;
+    }
+    
+    public void setLocation(int lanenum, int ind) {
+        this.lanenum = lanenum;
+        this.index = ind;
+    }
+    
+    public int getLanenum() {
+        return lanenum;
+    }
+    
+    public int getIndex() {
+        return index;
     }
     
     public int getValue() {
@@ -21,8 +59,9 @@ public class Brick {
     }
     
     public String toString() {
-        return  "Value of the Brick: " + value;
+        return "Value of the Brick: " + value;
     }
+    
     public void changeValue(int val) {
         this.value = val;
     }

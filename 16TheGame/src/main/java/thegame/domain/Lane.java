@@ -7,12 +7,12 @@ import java.util.ArrayList;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author afellman
  */
 public class Lane {
+
     private ArrayList<Brick> bricks;
 
     public Lane() {
@@ -22,7 +22,7 @@ public class Lane {
     public ArrayList<Brick> getBricks() {
         return bricks;
     }
-    
+
     public ArrayList<Brick> getBricks(Integer a, Integer b) {
         ArrayList<Brick> out = new ArrayList<>();
         for (int i = a; i < b; i++) {
@@ -30,19 +30,29 @@ public class Lane {
         }
         return out;
     }
-    
+
     public void initBricks(ArrayList<Brick> list) {
         this.bricks = list;
     }
-    
+
     public void addBrick(Brick b) {
         bricks.add(b);
     }
-    
-    public Integer getLength(){
+
+    public Integer getLength() {
         return bricks.size();
     }
-    
-    
-    
+
+    public void printLane() {
+        for (int i = 0; i < this.bricks.size(); i++) {
+            Brick b = bricks.get(i);
+            System.out.println(b.toString() + ", Location: Lane: " + b.getLanenum() + ", index: " + b.getIndex());
+
+        }
+    }
+
+    public void removeBrick(Integer index) {
+        bricks.remove(index);
+    }
+
 }
