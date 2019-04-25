@@ -19,6 +19,7 @@
 1. [Määrittelydokumentti](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/maarittelydokumentti.md)
 1. [työaikakirjanpito](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/tyoaikakirjanpito.md)
 1. [Pelisäännöt](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/rules.md)
+1. [Käyttöohje](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/instruction.md) 
 1. [arkkitehtuurikuvaus](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/arkkitehtuuri.md)
 
 ## Komentorivitoiminnot
@@ -35,4 +36,9 @@ Ohjelman Testaamista varten voidaan sen juurihakemistossa suorittaa seuraava kom
 Tiedostoon [Pelisäännöt](https://github.com/fellmana/ot-harjoitustyo/tree/master/16TheGame/checkstyles.xml) määrittelemät tarkistukset suoritetaan komennolla
 `mvn jxr:jxr checkstyle:checkstyle`
 Ja virheilmoitukset tallentuva *target/site/checkstyle.html* tiedostoon  
+
+
+### Pakkauksen luominen
+Ohjelmansta voidaan muodostaan `mvn package`
+
            

@@ -17,3 +17,4 @@ Päivä | aika | Mitä tein
 18.4 | 8 | Ongelma ratkaistu (Brick extends button) halleluja
 20.4 | 4 | Suuria edistyksiä pelin toiminnassa, :)
 21.4 | 6 | Ensimmäinen pelattava versio, joka toimii kaikki peruspelisäännöt toteutettu 
+25.4 | 3 | JUNIT testi oli ihan rikki hetken korjaus onnistui (`new JFXPanel();`)
