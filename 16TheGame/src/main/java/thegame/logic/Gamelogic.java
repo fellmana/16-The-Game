@@ -12,7 +12,7 @@ import thegame.domain.Lane;
 import thegame.domain.Urn;
 
 /**
- *
+ * Define Game logic and lane selection
  * @author afellman
  */
 public class Gamelogic {
@@ -85,7 +85,7 @@ public class Gamelogic {
         movesMade = 0;
 
     }
-
+    
     public void updateCurrentSelection(Lane sel) {
         selection = sel;
     }
@@ -110,7 +110,11 @@ public class Gamelogic {
             }
         }
     }
-
+    /**
+     *  Chose a lane to clear. 
+     *  Clearing means that it creates new empty ArrayList to bricks.
+     * @param n 
+     */
     public void clearLane(Integer n) {
         if (null == n) {
             lane4.initBricks(new ArrayList<>());
@@ -131,7 +135,13 @@ public class Gamelogic {
             }
         }
     }
-
+    
+    /**
+     * Add selection to lane, give selection and lane to add to.
+     * @param sel
+     * @param n 
+     */
+    
     public void addToLane(Lane sel, Integer n) {
         if (null == n) {
             for (int i = 0; i < sel.getLength(); i++) {
@@ -163,9 +173,20 @@ public class Gamelogic {
         }
     }
 
+    /**
+     * Grab a new selection and make it the current selection.
+     * @param lanenbr
+     * @param index 
+     */
     public void updateSelectionFromLane(Integer lanenbr, Integer index) {
         this.selection = grabSelection(lanenbr, index);
     }
+    
+    /**
+     *  Checks if the bricks are in order, if they are the selection is valid.
+     * @param sel
+     * @return 
+     */
 
     public Boolean isSelectionValid(Lane sel) {
         Integer prev = sel.getBricks().get(0).getValue();
@@ -186,7 +207,12 @@ public class Gamelogic {
         selection.initBricks(new ArrayList<>());
         selection.addBrick(b);
     }
-
+    /**
+     * 
+     * @param lanenbr
+     * @param n
+     * @return 
+     */
     public Lane grabSelection(Integer lanenbr, Integer n) {
         ArrayList<Brick> temp = new ArrayList<>();
         if (lanenbr == 1) {
@@ -445,7 +471,10 @@ public class Gamelogic {
         }
         return false;
     }
-
+    /**
+     * Check if win condition is met.
+     * @return 
+     */
     public boolean checkWin() {
         if (pile1.getBricks().get(pile1.getLength() - 1).getValue() != 16) {
             return false;

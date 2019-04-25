@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,6 +40,33 @@ public class LaneTest {
         Brick b = new Brick(1);
         lane.addBrick(b);
         assertEquals(b, lane.getBricks().get(0));
+    }
+    
+    
+    @Test 
+    public void initBricksChangesBricks() {
+        ArrayList<Brick> list = new ArrayList<>();
+        list.add(new Brick(1));
+        lane.initBricks(list);
+        assertEquals(1,lane.getBricks().size());
+    }
+    
+    @Test
+    public void getLengthGivesCorrectLengt() {
+        int a = lane.getLength();
+        assertEquals(lane.getBricks().size(),a);
+    }
+    
+    @Test
+    public void PrinLaneGivesOutput() {
+        lane.addBrick(new Brick(1));
+        assertEquals(true,lane.printLane());
+    }
+    
+    
+    @Test
+    public void PrintLaneEmptyReturnsFalse() {
+        assertEquals(false,lane.printLane());
     }
     
 

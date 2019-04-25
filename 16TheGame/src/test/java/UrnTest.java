@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 import javafx.embed.swing.JFXPanel;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,13 +42,35 @@ public class UrnTest {
         urn.draw();
         assertEquals(95, urn.getLength());
     }
-    
+
     @Test
-    public void UrnDrawGivesABrick(){
+    public void UrnDrawGivesABrick() {
         urn.InitializeUrn();
-        Brick b =  urn.draw();
+        Brick b = urn.draw();
         assertNotEquals(null, b);
     }
-    
+
+    @Test
+    public void UrnToStringGivesCorrect() {
+        urn.InitializeUrn();
+        String str = "1, 1, 1, 1, 1, 1, "
+                + "2, 2, 2, 2, 2, 2, "
+                + "3, 3, 3, 3, 3, 3, "
+                + "4, 4, 4, 4, 4, 4, "
+                + "5, 5, 5, 5, 5, 5, "
+                + "6, 6, 6, 6, 6, 6, "
+                + "7, 7, 7, 7, 7, 7, "
+                + "8, 8, 8, 8, 8, 8, "
+                + "9, 9, 9, 9, 9, 9, "
+                + "10, 10, 10, 10, 10, 10, "
+                + "11, 11, 11, 11, 11, 11, "
+                + "12, 12, 12, 12, 12, 12, "
+                + "13, 13, 13, 13, 13, 13, "
+                + "14, 14, 14, 14, 14, 14, "
+                + "15, 15, 15, 15, 15, 15, "
+                + "16, 16, 16, 16, 16, 16, ";
+
+        assertEquals(str, urn.toString());
+    }
 
 }

@@ -23,18 +23,15 @@ public class Lane {
         return bricks;
     }
 
-    public ArrayList<Brick> getBricks(Integer a, Integer b) {
-        ArrayList<Brick> out = new ArrayList<>();
-        for (int i = a; i < b; i++) {
-            out.add(bricks.get(i));
-        }
-        return out;
-    }
-
     public void initBricks(ArrayList<Brick> list) {
         this.bricks = list;
     }
 
+    /**
+     * Add brick to lane.
+     *
+     * @param b
+     */
     public void addBrick(Brick b) {
         bricks.add(b);
     }
@@ -43,16 +40,16 @@ public class Lane {
         return bricks.size();
     }
 
-    public void printLane() {
+    public boolean printLane() {
+        if (this.bricks.isEmpty()) {
+            return false;
+        }
         for (int i = 0; i < this.bricks.size(); i++) {
             Brick b = bricks.get(i);
             System.out.println(b.toString() + ", Location: Lane: " + b.getLanenum() + ", index: " + b.getIndex());
 
         }
-    }
-
-    public void removeBrick(Integer index) {
-        bricks.remove(index);
+        return true;
     }
 
 }

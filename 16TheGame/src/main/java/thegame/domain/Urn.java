@@ -8,7 +8,7 @@ package thegame.domain;
 import java.util.ArrayList;
 
 /**
- *
+ * Gives the functionality of the Urn 
  * @author afellman
  */
 public class Urn {
@@ -19,7 +19,10 @@ public class Urn {
         super();
         this.bricks = new ArrayList<>();
     }
-
+    /**
+     * Initialize urn with 96 brick from 1-16, 6 of each value.
+     * 
+     */
     public void InitializeUrn() {
         for (int i = 1; i <= 16; i++) {
             for (int j = 1; j <= 6; j++) {
@@ -31,7 +34,10 @@ public class Urn {
     public int getLength() {
         return this.bricks.size();
     }
-
+    /**
+     * Draw a random brick from the urn.
+     * @return 
+     */
     public Brick draw() {
         int randomNum = 0 + (int) (Math.random() * this.getLength());
         Brick chosen = bricks.get(randomNum);

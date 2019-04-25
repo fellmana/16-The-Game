@@ -37,10 +37,16 @@ public class Brick extends Button {
         this.lanenum = lanenum;
     }
     
+   
     public void setIndex(int index) {
         this.index = index;
     }
     
+    /**
+     * Set the location of the brick, ie which lane it is in and on what index.
+     * @param lanenum
+     * @param ind 
+     */
     public void setLocation(int lanenum, int ind) {
         this.lanenum = lanenum;
         this.index = ind;
