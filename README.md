@@ -13,9 +13,10 @@
 1. Rules näkymä työnalla
 1. Koodin siistiminen kesken
 1. luokkien testausta on laajennettu mutta laajennusta tarvitaan
+1. JavaDoc aloitettu
 
 ## Releaset
-* [viiko6](https://github.com/fellmana/ot-harjoitustyo/releases/tag/viikko6)
+* [viikko6](https://github.com/fellmana/ot-harjoitustyo/releases/tag/viikko6)
 
 ## Dokumentaatio
 1. [Määrittelydokumentti](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/maarittelydokumentti.md)
