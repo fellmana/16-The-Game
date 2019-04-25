@@ -7,12 +7,12 @@
 ## Sovelluksen status
 
  
-1. Ohjelmassa on määrittely dokumentin 3 näkymään, vaikkakin toiminallisuudet puuttuvat
-1. Ohjelma alustaa ruukun ja Pelinäkymässä on mahdollista nostaa ruukusta palikoita
-1. Ruukusta nostaminen antaa satunnaisen elementin ja poistaa sen ruukusta. 
-1. ruukun elemttejä voidaan sijoittaa kaistoille mutta tämä on toistaiseksi erillään pelilogiikasta
-1. Pelilogiikka on eroteltu erikseen mutta ei ole vielä kunnolla implementoitu
-1. luokkien testausta on laajennettu 
+1. Ohjelmassa on nyt toimiva peli joka toteuttaa pelisääntöjen mukaisen pelaamisen.
+1. Ohjelmassa pystyy pelaamaan pelin alusta loppuun asti ja näyttävästi toimiin odotetusti.
+1. Save game ja load Game toiminnallisuus työnalla
+1. Rules näkymä työnalla
+1. Koodin siistiminen kesken
+1. luokkien testausta on laajennettu mutta laajennusta tarvitaan
 
 
 ## Dokumentaatio

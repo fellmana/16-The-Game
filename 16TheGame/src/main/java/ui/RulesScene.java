@@ -62,4 +62,7 @@ public class RulesScene {
         return RulesWindow;
     }
 
+    public void loadText() {
+
+    }
 }

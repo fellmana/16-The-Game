@@ -16,6 +16,7 @@ public class Urn {
     private ArrayList<Brick> bricks;
 
     public Urn() {
+        super();
         this.bricks = new ArrayList<>();
     }
 

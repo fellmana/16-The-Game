@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 
-import org.junit.After;
-import org.junit.AfterClass;
+
+import javafx.embed.swing.JFXPanel;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import thegame.domain.Brick;
 import thegame.domain.Urn;
+import ui.Game;
 
 /**
  *
@@ -26,6 +26,8 @@ public class UrnTest {
 
     @Before
     public void setUp() {
+        //Set up javafx toolkit  essential that this is here
+        new JFXPanel();
         urn = new Urn();
     }
 

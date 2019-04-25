@@ -57,7 +57,7 @@ public class Game extends Application {
     public static void main(String[] args) {
         launch(Game.class);
     }
-
+    
     @Override
     public void start(Stage Window) {
         Urn = new Urn();

@@ -10,38 +10,39 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import thegame.domain.Brick;
-import thegame.domain.Lane;
+import thegame.logic.Gamelogic;
 
 /**
  *
  * @author afellman
  */
-public class LaneTest {
-
-    Lane lane;
-
-    public LaneTest() {
-    }
-
-    @Before
-    public void setUp() {
-        lane = new Lane();
-    }
-
-    @Test
-    public void InitialLaneEmpty() {
-        assertEquals(0, lane.getBricks().size());
-    }
-
-    @Test
-    public void AddBrickToLaneWorks() {
-        Brick b = new Brick(1);
-        lane.addBrick(b);
-        assertEquals(b, lane.getBricks().get(0));
+public class GamelogicTest {
+    Gamelogic logic;
+    public GamelogicTest() {
     }
     
-
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+        logic = new Gamelogic();
+    }
+    
+    @After
+    public void tearDown() {
+    }
+    
+    
+    @Test
+    public void initialMovesMadeZero(){
+        assertEquals(0, logic.getMovesMade());
+    }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
