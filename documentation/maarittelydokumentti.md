@@ -2,7 +2,7 @@
 
 ## Sovelluksen esittely
 16TheGame pelisovellus perustuu vanhaan pasianssityyliseen peliin. Pelissä on palikoita jotka ovat numeroitu 1-16 ja jokaista numeroa on 6 kappaletta. Palikoita nostetaan ruukusta yksi kerrallaan ja sijoitetaan pelialustalle, jossa niitä voidaan manipuloida pasianssityylisten pelisääntöjen tapaisesti. 
-Tarkemmat pelisäännot ovat tulossa ja tulevat löytyymään seuraavan linkin takaa, [Pelisäännöt](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/rules.md). Pelistä ei ikävä kyllä löydy oikeastaan mitään ulkoisia viitteitä tai sääntöja joihin voisin viitata ja se on osittain joutunut unohduksiin. Ainoa viittaus peliin minkä löysin oli kuva [Zacharias Topeliuksesta pelaamassa peliä 1800 luvulta.](https://www.finna.fi/Record/sls.SLSA+801_SLSA+801_29).
+Tarkemmat pelisäännot löytyvät seuraavan linkin takaa, [Pelisäännöt](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/rules.md). Pelistä ei ikävä kyllä löydy oikeastaan mitään ulkoisia viitteitä tai sääntöja joihin voisin viitata ja se on osittain joutunut unohduksiin. Ainoa viittaus peliin minkä löysin oli kuva [Zacharias Topeliuksesta pelaamassa peliä 1800 luvulta.](https://www.finna.fi/Record/sls.SLSA+801_SLSA+801_29).
 
 ## Käyttäjät
 Sovelluksessa ei ole erityisiä käyttäjiä sen luonteen takia, joten kaikki ovat sovelluksen normaalikäyttäjiä.
@@ -18,7 +18,7 @@ Sovelluksessa on kolme eri näkymää.
 
 
 ## Sovelluksen tarjoamat toiminnallisuudet
-Sovellus toteutuskieli on englanti, mutta säännöt kirjoitetaan myös suomeksi ja todennäköisesti ruotsiksi.
+Sovellus toteutuskieli on englanti.
 
 ### Valikko
 * Valikossa on 4 eri toimintoa
@@ -48,9 +48,8 @@ Sovellus toteutuskieli on englanti, mutta säännöt kirjoitetaan myös suomeksi
 			- 'Main Menu' sirrytään valikkonäkymään
 
 ### Sääntönäkymä
-* Toteutus joko uusi ikkuna tai sitten vain uusi näkymä
+* Toteutus; uusi näkymä
 	- Tekstilaatikko jossa ohjeet on selkeästi luettavissa
-	- Kieli valikko tai valinta mahdollisuus
 
 ## Pelin Tekninentoiminta ja toteutus
 * Ruukku (käytännössä lista) jossa palikat ovat (elementtejä listassa)
@@ -62,10 +61,10 @@ Sovellus toteutuskieli on englanti, mutta säännöt kirjoitetaan myös suomeksi
 * Pinot: 
 	- pinot ovat listoja joiden elementit on pakko lisätä (append) oikeassa järjestyksessä 
 	- sallii vain yhden kappaleen tiettyä palikkaa
-	- Kun kaikki pinot taynnä tarkistaa onko voitto ehto täyttynyt jos ei niin hävisit pelin
+	- Kun kaikki pinot täynnä tarkistaa onko voitto ehto täyttynyt.
 
 ## Jatkokehitysideoita
 * Ns. huijausmekanismi, jolla jos et onnistu saamaan peliä loppuun voit suorittaa huijaussiirtoja.
 * Mahdollinen 'replay' järjestelmän jonka avulla voidaan pelata sama järjestys uudelleen.
 * Mahdolliset variaatiot esim. useampi 'kaista'.  
-* Kehittää jonku näköinen highscore järjestelmä vaikkakin pelissä ei ole minkään näköistä pisteytystä, ehkä perustuu aikaan 
+ 
