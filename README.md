@@ -1,6 +1,4 @@
-# OT-Harjoitustyö 2019
-
-## 16 The Game
+# 16 The Game
 
 16 The Game on peli sovellus joka on tietokone implementaatio klassisesta 1800-luvun pasianssipelistä. 
 
