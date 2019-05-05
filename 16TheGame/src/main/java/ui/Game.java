@@ -59,6 +59,8 @@ public class Game extends Application {
         PlayScene.updateLane2(PlayScene.logic.getLane(2).getBricks());
         PlayScene.updateLane3(PlayScene.logic.getLane(3).getBricks());
         PlayScene.updateLane4(PlayScene.logic.getLane(4).getBricks());
+        PlayScene.setCurrentLaneInt(0);
+        PlayScene.newGame();
 
         Menu.getNewGameButton().setOnAction((event) -> {
             Window.setScene(GameWindow);
@@ -86,12 +88,14 @@ public class Game extends Application {
                 PlayScene.logic.setSelection(new Brick(0));
                 PlayScene.resetLanes();
 
+            } else {
+                Window.setScene(GameWindow);
             }
 
         });
         Menu.getRulesButton().setOnAction((event) -> {
             Window.setScene(Rules);
-            
+
         });
         Menu.getExitButton().setOnAction((event) -> {
             System.exit(0);

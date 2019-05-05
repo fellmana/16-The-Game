@@ -1,6 +1,6 @@
 # Application Instruction
 
-Download jar 
+Download [jar](https://github.com/fellmana/ot-harjoitustyo/releases/tag/V1.0) 
 
 to run the porogram run command 
 `java -jar 16TheGame.jar`

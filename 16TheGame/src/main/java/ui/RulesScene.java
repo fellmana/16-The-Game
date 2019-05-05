@@ -10,6 +10,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -18,6 +21,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextAreaBuilder;
 import javafx.scene.layout.VBoxBuilder;
+import sun.misc.ClassLoaderUtil;
 
 /**
  *
@@ -65,11 +69,10 @@ public class RulesScene {
         return RulesWindow;
     }
 
-    public void loadText() throws FileNotFoundException, IOException{
-        ClassLoader classLoader = new RulesScene().getClass().getClassLoader();
- 
-        File file = new File(classLoader.getResource("rules.md").getFile());
-        BufferedReader br = new BufferedReader(new FileReader(file));
+    public void loadText() throws FileNotFoundException, IOException {
+        InputStream inputStream = RulesScene.class.getResourceAsStream("/rules.md");
+        InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+        BufferedReader br = new BufferedReader(streamReader);
         try {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();

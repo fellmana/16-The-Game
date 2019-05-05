@@ -820,8 +820,9 @@ public class PlayScene {
             } catch (Exception e) {
                 System.out.println(e);
             }
+            return true;
         }
-        return true;
+        return false;
     }
 
 }

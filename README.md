@@ -4,19 +4,12 @@
 
 16 The Game on peli sovellus joka on tietokone implementaatio klassisesta 1800-luvun pasianssipelistä. 
 
-## Sovelluksen status
-
- 
-1. Ohjelmassa on nyt toimiva peli joka toteuttaa pelisääntöjen mukaisen pelaamisen.
-1. Ohjelmassa pystyy pelaamaan pelin alusta loppuun asti ja näyttävästi toimiin odotetusti.
-1. Save game ja load Game toiminnallisuus työnalla
-1. Rules näkymä työnalla
-1. Koodin siistiminen kesken
-1. luokkien testausta on laajennettu mutta laajennusta tarvitaan
-1. JavaDoc aloitettu
-
 ## Releaset
-* [viikko6](https://github.com/fellmana/ot-harjoitustyo/releases/tag/viikko6)
+* [V1.0](https://github.com/fellmana/ot-harjoitustyo/releases/tag/V1.0)
+
+## Asennus ja ajaminen
+
+Lataa ohjelman [jar](https://github.com/fellmana/ot-harjoitustyo/releases/tag/V1.0) paketti ja aja ohjelman komennolla `java -jar 16TheGame.jar`
 
 ## Dokumentaatio
 1. [Määrittelydokumentti](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/maarittelydokumentti.md)
@@ -24,7 +17,7 @@
 1. [Pelisäännöt](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/rules.md)
 1. [Käyttöohje](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/instructions.md) 
 1. [arkkitehtuurikuvaus](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/arkkitehtuuri.md)
-
+1. [testausdokumentti](https://github.com/fellmana/ot-harjoitustyo/blob/master/documentation/testaus.md)
 ## Komentorivitoiminnot
 
 ### ohjelman ajaminen
