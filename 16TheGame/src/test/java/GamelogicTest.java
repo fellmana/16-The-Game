@@ -402,9 +402,34 @@ public class GamelogicTest {
         assertEquals(5, logic.getLane(4).getBricks().size());
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void ArePileMovesCorrectLegalMoves() {
+        logic.getPile1().addBrick(new Brick(1));
+        logic.getPile2().addBrick(new Brick(1));
+        logic.getPile3().addBrick(new Brick(1));
+        logic.getPile4().addBrick(new Brick(1));
+        logic.getPile5().addBrick(new Brick(1));
+        logic.getPile6().addBrick(new Brick(1));
+        logic.getSelection().addBrick(new Brick(2));
+        for (int i = 1; i < 7; i++) {
+            assertEquals(true, logic.isPileMoveLegal(i));
+        }
+
+    }
+    
+     @Test
+    public void isPileMovesLegalGivesFalseOnIllegalMoves() {
+        logic.getPile1().addBrick(new Brick(1));
+        logic.getPile2().addBrick(new Brick(1));
+        logic.getPile3().addBrick(new Brick(1));
+        logic.getPile4().addBrick(new Brick(1));
+        logic.getPile5().addBrick(new Brick(1));
+        logic.getPile6().addBrick(new Brick(1));
+        logic.getSelection().addBrick(new Brick(3));
+        for (int i = 1; i < 7; i++) {
+            assertEquals(false, logic.isPileMoveLegal(i));
+        }
+
+    }
+
 }

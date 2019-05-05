@@ -2,13 +2,9 @@ package thegame.domain;
 
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 /**
- *
+ * Abstraction class for functionality of lane and piles.
  * @author afellman
  */
 public class Lane {
@@ -22,10 +18,16 @@ public class Lane {
     public ArrayList<Brick> getBricks() {
         return bricks;
     }
-
+    
+    
+    /**
+     * Initialize lane from list of bricks.
+     * @param list 
+     */
     public void initBricks(ArrayList<Brick> list) {
         this.bricks = list;
     }
+   
 
     /**
      * Add brick to lane.
@@ -40,6 +42,11 @@ public class Lane {
         return bricks.size();
     }
 
+    
+    /**
+     * Displays readable information on Lane properties.
+     * @return 
+     */
     public boolean printLane() {
         if (this.bricks.isEmpty()) {
             return false;
@@ -50,6 +57,19 @@ public class Lane {
 
         }
         return true;
+    }
+    
+    
+    /**
+     * toString formatting used in save game state
+     * @return 
+     */
+    public String toString() {
+        String outstring = "";
+        for (int i = 0; i < bricks.size(); i++) {
+            outstring += bricks.get(i).getValue() + " ";
+        }
+        return outstring;
     }
 
 }

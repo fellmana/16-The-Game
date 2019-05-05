@@ -5,6 +5,10 @@
  */
 package ui;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,12 +22,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javax.swing.JFileChooser;
 import thegame.domain.Brick;
-import thegame.domain.Lane;
+import thegame.domain.Urn;
 import thegame.logic.Gamelogic;
 
 /**
@@ -52,6 +56,8 @@ public class PlayScene {
 
     Label Status;
     Label Selection;
+    Label winLabel;
+    Label winLabel2;
     HBox GameWindowBox;
     HBox ControlBox;
     BorderPane GameWindowPanel;
@@ -80,7 +86,7 @@ public class PlayScene {
     public PlayScene() {
         this.Bricksize = 80;
         this.BackToMenuButton1 = new Button("Main Menu");
-        this.SaveGameButton = new Button("Save Game(status atm)");
+        this.SaveGameButton = new Button("Save Game");
         this.UrnButton = new Button("Draw");
         this.AddLane1Button = new Button("add");
         this.AddLane2Button = new Button("add");
@@ -441,6 +447,31 @@ public class PlayScene {
         }
     }
 
+    public void winDialog() {
+        Lanes.getChildren().clear();
+        winLabel = new Label("You Win!");
+        winLabel.setFont(new Font("Arial", 30));
+        winLabel.setPrefHeight(300);
+        winLabel.setPrefWidth(300);
+        winLabel2 = new Label("Moves Played: " + logic.getMovesMade());
+        winLabel2.setFont(new Font("Arial", 30));
+        winLabel2.setPrefHeight(300);
+        winLabel2.setPrefWidth(300);
+        Lanes.getChildren().add(winLabel);
+        Lanes.getChildren().add(winLabel2);
+        Selection.setText("YOU WIN !");
+    }
+
+    public void resetLanes() {
+        Lanes.getChildren().clear();
+        Lanes.getChildren().add(Lane1);
+        Lanes.getChildren().add(Lane2);
+        Lanes.getChildren().add(Lane3);
+        Lanes.getChildren().add(Lane4);
+        Lanes.getChildren().add(dispSelection);
+        Selection.setText("");
+    }
+
     public Integer getCurrentLaneInt() {
         return CurrentLane;
     }
@@ -564,6 +595,34 @@ public class PlayScene {
         }
     }
 
+    public void refreshPiles() {
+
+        int topvalue = logic.getPile1().getBricks().get(logic.getPile1().getLength() - 1).getValue();
+        String file = "/b" + topvalue + ".png";
+        viewPile1.setImage(new Image(getClass().getResourceAsStream(file)));
+
+        topvalue = logic.getPile2().getBricks().get(logic.getPile2().getLength() - 1).getValue();
+        file = "/b" + topvalue + ".png";
+        viewPile2.setImage(new Image(getClass().getResourceAsStream(file)));
+
+        topvalue = logic.getPile3().getBricks().get(logic.getPile3().getLength() - 1).getValue();
+        file = "/b" + topvalue + ".png";
+        viewPile3.setImage(new Image(getClass().getResourceAsStream(file)));
+
+        topvalue = logic.getPile4().getBricks().get(logic.getPile4().getLength() - 1).getValue();
+        file = "/b" + topvalue + ".png";
+        viewPile4.setImage(new Image(getClass().getResourceAsStream(file)));
+
+        topvalue = logic.getPile5().getBricks().get(logic.getPile5().getLength() - 1).getValue();
+        file = "/b" + topvalue + ".png";
+        viewPile5.setImage(new Image(getClass().getResourceAsStream(file)));
+
+        topvalue = logic.getPile6().getBricks().get(logic.getPile6().getLength() - 1).getValue();
+        file = "/b" + topvalue + ".png";
+        viewPile6.setImage(new Image(getClass().getResourceAsStream(file)));
+
+    }
+
     public ImageView getViewPile1() {
         return viewPile1;
     }
@@ -599,19 +658,170 @@ public class PlayScene {
         viewPile1.setImage(new Image(getClass().getResourceAsStream(file)));
         int topvalue2 = logic.getPile2().getBricks().get(logic.getPile2().getLength() - 1).getValue();
         String file2 = "/b" + topvalue2 + ".png";
-        viewPile1.setImage(new Image(getClass().getResourceAsStream(file2)));
+        viewPile2.setImage(new Image(getClass().getResourceAsStream(file2)));
         int topvalue3 = logic.getPile3().getBricks().get(logic.getPile3().getLength() - 1).getValue();
         String file3 = "/b" + topvalue3 + ".png";
-        viewPile1.setImage(new Image(getClass().getResourceAsStream(file3)));
+        viewPile3.setImage(new Image(getClass().getResourceAsStream(file3)));
         int topvalue4 = logic.getPile4().getBricks().get(logic.getPile4().getLength() - 1).getValue();
         String file4 = "/b" + topvalue4 + ".png";
-        viewPile1.setImage(new Image(getClass().getResourceAsStream(file4)));
+        viewPile4.setImage(new Image(getClass().getResourceAsStream(file4)));
         int topvalue5 = logic.getPile5().getBricks().get(logic.getPile5().getLength() - 1).getValue();
         String file5 = "/b" + topvalue5 + ".png";
-        viewPile1.setImage(new Image(getClass().getResourceAsStream(file5)));
+        viewPile5.setImage(new Image(getClass().getResourceAsStream(file5)));
         int topvalue6 = logic.getPile6().getBricks().get(logic.getPile6().getLength() - 1).getValue();
         String file6 = "/b" + topvalue6 + ".png";
-        viewPile1.setImage(new Image(getClass().getResourceAsStream(file6)));
+        viewPile6.setImage(new Image(getClass().getResourceAsStream(file6)));
+    }
+
+    public void saveGame(Urn u, Brick b) {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File(""));
+        int retrival = chooser.showSaveDialog(null);
+        if (retrival == JFileChooser.APPROVE_OPTION) {
+
+            try (FileWriter fw = new FileWriter(chooser.getSelectedFile())) {
+                String header = "16TheGameSave";
+                fw.write(header + "\n");
+                String format = "ln3: Urn, "
+                        + "ln4: lane1, "
+                        + "ln5: lane2, "
+                        + "ln6: lane3, "
+                        + "ln7: lane4, "
+                        + "ln8: pile1, "
+                        + "ln9: pile2, "
+                        + "ln10: pile3, "
+                        + "ln11: pile4, "
+                        + "ln12: pile5, "
+                        + "ln13: pile6, "
+                        + "ln14: currentdraw, "
+                        + "ln15: movesplayed, ";
+                fw.write(format + "\n");
+                fw.write(u.toString() + "\n");
+
+                for (int i = 1; i < 5; i++) {
+                    fw.write(logic.getLane(i).toString() + "\n");
+                }
+                fw.write(logic.getPile1().toString() + "\n");
+                fw.write(logic.getPile2().toString() + "\n");
+                fw.write(logic.getPile3().toString() + "\n");
+                fw.write(logic.getPile4().toString() + "\n");
+                fw.write(logic.getPile5().toString() + "\n");
+                fw.write(logic.getPile6().toString() + "\n");
+                fw.write(b.getValue() + "\n");
+                fw.write(logic.getMovesMade() + "\n");
+
+                fw.close();
+                System.out.println("GameSaved");
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+    }
+
+    public Boolean loadGame() {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File(""));
+        int retrival = chooser.showOpenDialog(null);
+        if (retrival == JFileChooser.APPROVE_OPTION) {
+
+            try (FileReader fr = new FileReader(chooser.getSelectedFile())) {
+                BufferedReader br = new BufferedReader(fr);
+                String line;
+
+                line = br.readLine();
+                System.out.println(line);
+                if ("16TheGameSave".equals(line)) {
+                    System.out.println("Formatting Check Passed");
+                } else {
+                    System.out.println("Formatting Check Failed");
+                    return false;
+                }
+                line = br.readLine();
+                line = br.readLine();
+                ArrayList<Integer> lst = new ArrayList<>();
+                if (line.length() > 0) {
+                    String split[] = line.split(" ");
+                    for (int i = 0; i < split.length; i++) {
+                        lst.add(Integer.parseInt(split[i]));
+                    }
+                }
+                System.out.println(lst.toString());
+                logic.setUrn(lst);
+                for (int i = 1; i < 5; i++) {
+                    line = br.readLine();
+                    ArrayList<Brick> lanelst = new ArrayList<>();
+                    if (line.length() > 0) {
+                        String split[] = line.split(" ");
+                        for (int j = 0; j < split.length; j++) {
+                            lanelst.add(new Brick(Integer.parseInt(split[j])));
+                        }
+                    }
+
+                    logic.getLane(i).initBricks(lanelst);
+                    System.out.println(logic.getLane(i).toString());
+                }
+                line = br.readLine();
+                String split[] = line.split(" ");
+                ArrayList<Brick> lanelst = new ArrayList<>();
+                for (int j = 0; j < split.length; j++) {
+                    lanelst.add(new Brick(Integer.parseInt(split[j])));
+                }
+                logic.getPile1().initBricks(lanelst);
+
+                line = br.readLine();
+                split = line.split(" ");
+                ArrayList<Brick> lanelst2 = new ArrayList<>();
+                for (int j = 0; j < split.length; j++) {
+                    lanelst2.add(new Brick(Integer.parseInt(split[j])));
+                }
+                logic.getPile2().initBricks(lanelst2);
+
+                line = br.readLine();
+                split = line.split(" ");
+                ArrayList<Brick> lanelst3 = new ArrayList<>();
+                for (int j = 0; j < split.length; j++) {
+                    lanelst3.add(new Brick(Integer.parseInt(split[j])));
+                }
+                logic.getPile3().initBricks(lanelst3);
+
+                line = br.readLine();
+                split = line.split(" ");
+                ArrayList<Brick> lanelst4 = new ArrayList<>();
+                for (int j = 0; j < split.length; j++) {
+                    lanelst4.add(new Brick(Integer.parseInt(split[j])));
+                }
+                logic.getPile4().initBricks(lanelst4);
+
+                line = br.readLine();
+                split = line.split(" ");
+                ArrayList<Brick> lanelst5 = new ArrayList<>();
+                for (int j = 0; j < split.length; j++) {
+                    lanelst5.add(new Brick(Integer.parseInt(split[j])));
+                }
+                logic.getPile5().initBricks(lanelst5);
+
+                line = br.readLine();
+                split = line.split(" ");
+                ArrayList<Brick> lanelst6 = new ArrayList<>();
+                for (int j = 0; j < split.length; j++) {
+                    lanelst6.add(new Brick(Integer.parseInt(split[j])));
+                }
+                logic.getPile6().initBricks(lanelst6);
+
+                line = br.readLine();
+                logic.setSelection(new Brick(Integer.parseInt(line)));
+
+                line = br.readLine();
+                logic.setMovesMade(Integer.parseInt(line));
+
+                //System.out.println(br.readLine());
+                System.out.println("GameLoaded");
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return true;
     }
 
 }

@@ -8,7 +8,8 @@ package thegame.domain;
 import java.util.ArrayList;
 
 /**
- * Gives the functionality of the Urn 
+ * Gives the functionality of the Urn
+ *
  * @author afellman
  */
 public class Urn {
@@ -19,11 +20,16 @@ public class Urn {
         super();
         this.bricks = new ArrayList<>();
     }
+
+    public ArrayList<Brick> getBricks() {
+        return bricks;
+    }
+
     /**
      * Initialize urn with 96 brick from 1-16, 6 of each value.
-     * 
+     *
      */
-    public void InitializeUrn() {
+    public void initializeUrn() {
         for (int i = 1; i <= 16; i++) {
             for (int j = 1; j <= 6; j++) {
                 this.bricks.add(new Brick(i));
@@ -31,12 +37,19 @@ public class Urn {
         }
     }
 
+    /**
+     * Number of bricks in Urn
+     *
+     * @return
+     */
     public int getLength() {
         return this.bricks.size();
     }
+
     /**
      * Draw a random brick from the urn.
-     * @return 
+     *
+     * @return
      */
     public Brick draw() {
         int randomNum = 0 + (int) (Math.random() * this.getLength());
@@ -45,15 +58,29 @@ public class Urn {
         return chosen;
     }
 
-    //
-    //      Add load method to initialize from file
-    //
+    /**
+     * ToString method used in save game state
+     *
+     * @return
+     */
     public String toString() {
         String result = "";
         for (Brick b : bricks) {
-            result += (b.getValue() + ", ");
+            result += (b.getValue() + " ");
         }
         return result;
+    }
+
+    /**
+     * Initialize urn from ArrayList<Integer>
+     *
+     * @param lst
+     */
+    public void loadUrn(ArrayList<Integer> lst) {
+        this.bricks.clear();
+        for (int i = 0; i < lst.size(); i++) {
+            this.bricks.add(new Brick(lst.get(i)));
+        }
     }
 
 }

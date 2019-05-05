@@ -9,46 +9,22 @@ package ui;
  *
  * @author afellman
  */
-import ui.RulesScene;
-import ui.PlayScene;
-import ui.MainMenu;
-import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.geometry.Insets;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextAreaBuilder;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBoxBuilder;
-import javafx.scene.paint.Color;
 import thegame.domain.Brick;
 import thegame.domain.Lane;
 import thegame.domain.Urn;
-import thegame.logic.Gamelogic;
 
 public class Game extends Application {
 
     private ArrayList<Integer> selection;
     private Brick urnBrick;
-    private Urn Urn;
+    public Urn Urn;
     private Lane lane1;
     private Lane lane2;
     private Lane lane3;
@@ -57,9 +33,9 @@ public class Game extends Application {
     public static void main(String[] args) {
         launch(Game.class);
     }
-    
+
     @Override
-    public void start(Stage Window) {
+    public void start(Stage Window) throws IOException {
         Urn = new Urn();
         lane1 = new Lane();
         lane2 = new Lane();
@@ -79,27 +55,43 @@ public class Game extends Application {
         Scene GameWindow = new Scene(PlayScene.build(), 900, 900);
         Scene Rules = new Scene(RuleScene.BuildScene(), 1000, 900);
 
-        PlayScene.updateLane1(lane1.getBricks());
-        PlayScene.updateLane2(lane2.getBricks());
-        PlayScene.updateLane3(lane3.getBricks());
-        PlayScene.updateLane4(lane4.getBricks());
+        PlayScene.updateLane1(PlayScene.logic.getLane(1).getBricks());
+        PlayScene.updateLane2(PlayScene.logic.getLane(2).getBricks());
+        PlayScene.updateLane3(PlayScene.logic.getLane(3).getBricks());
+        PlayScene.updateLane4(PlayScene.logic.getLane(4).getBricks());
 
         Menu.getNewGameButton().setOnAction((event) -> {
             Window.setScene(GameWindow);
             PlayScene.newGame();
             Urn = new Urn();
-            Urn.InitializeUrn();
+            Urn.initializeUrn();
             PlayScene.getStatus().setText("Bricks in Urn: " + Urn.getLength());
             urnBrick = new Brick(0);
+            PlayScene.refreshPiles();
             PlayScene.changeCurrentbrick(urnBrick.getValue());
             PlayScene.updateDispSelection();
+            PlayScene.resetLanes();
         });
         Menu.getLoadGameButton().setOnAction((event) -> {
-            Window.setScene(GameWindow);
-            Urn.InitializeUrn();
+            Boolean load = PlayScene.loadGame();
+            if (load == true) {
+                Window.setScene(GameWindow);
+                PlayScene.updateLane1(PlayScene.logic.getLane(1).getBricks());
+                PlayScene.updateLane2(PlayScene.logic.getLane(2).getBricks());
+                PlayScene.updateLane3(PlayScene.logic.getLane(3).getBricks());
+                PlayScene.updateLane4(PlayScene.logic.getLane(4).getBricks());
+                PlayScene.refreshPiles();
+                Urn = PlayScene.logic.getUrn();
+                PlayScene.changeCurrentbrick(PlayScene.logic.getSelection().getBricks().get(0).getValue());
+                PlayScene.logic.setSelection(new Brick(0));
+                PlayScene.resetLanes();
+
+            }
+
         });
         Menu.getRulesButton().setOnAction((event) -> {
             Window.setScene(Rules);
+            
         });
         Menu.getExitButton().setOnAction((event) -> {
             System.exit(0);
@@ -115,97 +107,111 @@ public class Game extends Application {
         PlayScene.getViewPile1().setOnMouseClicked((event) -> {
             System.out.println("Pile 1 clicked");
             Integer fromLane = PlayScene.getCurrentLaneInt();
-            if (fromLane == 0) {
-                PlayScene.moveToPile(1);
-                urnBrick = new Brick(0);
-                PlayScene.changeCurrentbrick(urnBrick.getValue());
-                PlayScene.updateDispSelection();
-            } else {
-                PlayScene.moveToPile(1);
+            if (true == PlayScene.logic.isPileMoveLegal(1)) {
+                if (fromLane == 0) {
+                    PlayScene.moveToPile(1);
+                    urnBrick = new Brick(0);
+                    PlayScene.changeCurrentbrick(urnBrick.getValue());
+                    PlayScene.updateDispSelection();
+                } else {
+                    PlayScene.moveToPile(1);
+                }
+                if (PlayScene.logic.checkWin() == true) {
+                    PlayScene.winDialog();
+                    System.out.println("WIN WIN WIN");
+                }
             }
-            if (PlayScene.logic.checkWin() == true) {
-                PlayScene.Selection.setText("YOU WIN !");
-                System.out.println("WIN WIN WIN");
-            }
+
         });
         PlayScene.getViewPile2().setOnMouseClicked((event) -> {
             System.out.println("Pile 2 clicked");
             Integer fromLane = PlayScene.getCurrentLaneInt();
-            if (fromLane == 0) {
-                PlayScene.moveToPile(2);
-                urnBrick = new Brick(0);
-                PlayScene.changeCurrentbrick(urnBrick.getValue());
-                PlayScene.updateDispSelection();
-            } else {
-                PlayScene.moveToPile(2);
-            }
-            if (PlayScene.logic.checkWin() == true) {
-                PlayScene.Selection.setText("YOU WIN !");
-                System.out.println("WIN WIN WIN");
+            if (true == PlayScene.logic.isPileMoveLegal(2)) {
+                if (fromLane == 0) {
+                    PlayScene.moveToPile(2);
+                    urnBrick = new Brick(0);
+                    PlayScene.changeCurrentbrick(urnBrick.getValue());
+                    PlayScene.updateDispSelection();
+                } else {
+                    PlayScene.moveToPile(2);
+                }
+                if (PlayScene.logic.checkWin() == true) {
+                    PlayScene.winDialog();
+                    System.out.println("WIN WIN WIN");
+                }
             }
         });
         PlayScene.getViewPile3().setOnMouseClicked((event) -> {
             System.out.println("Pile 3 clicked");
             Integer fromLane = PlayScene.getCurrentLaneInt();
-            if (fromLane == 0) {
-                PlayScene.moveToPile(3);
-                urnBrick = new Brick(0);
-                PlayScene.changeCurrentbrick(urnBrick.getValue());
-                PlayScene.updateDispSelection();
-            } else {
-                PlayScene.moveToPile(3);
-            }
-            if (PlayScene.logic.checkWin() == true) {
-                PlayScene.Selection.setText("YOU WIN !");
-                System.out.println("WIN WIN WIN");
+            if (true == PlayScene.logic.isPileMoveLegal(3)) {
+                if (fromLane == 0) {
+                    PlayScene.moveToPile(3);
+                    urnBrick = new Brick(0);
+                    PlayScene.changeCurrentbrick(urnBrick.getValue());
+                    PlayScene.updateDispSelection();
+                } else {
+                    PlayScene.moveToPile(3);
+                }
+                if (PlayScene.logic.checkWin() == true) {
+                    PlayScene.winDialog();
+                    System.out.println("WIN WIN WIN");
+                }
             }
         });
         PlayScene.getViewPile4().setOnMouseClicked((event) -> {
             System.out.println("Pile 4 clicked");
             Integer fromLane = PlayScene.getCurrentLaneInt();
-            if (fromLane == 0) {
-                PlayScene.moveToPile(4);
-                urnBrick = new Brick(0);
-                PlayScene.changeCurrentbrick(urnBrick.getValue());
-                PlayScene.updateDispSelection();
-            } else {
-                PlayScene.moveToPile(4);
-            }
-            if (PlayScene.logic.checkWin() == true) {
-                PlayScene.Selection.setText("YOU WIN !");
-                System.out.println("WIN WIN WIN");
+            if (true == PlayScene.logic.isPileMoveLegal(4)) {
+                if (fromLane == 0) {
+                    PlayScene.moveToPile(4);
+                    urnBrick = new Brick(0);
+                    PlayScene.changeCurrentbrick(urnBrick.getValue());
+                    PlayScene.updateDispSelection();
+                } else {
+                    PlayScene.moveToPile(4);
+                }
+                if (PlayScene.logic.checkWin() == true) {
+                    PlayScene.winDialog();
+                    System.out.println("WIN WIN WIN");
+                }
             }
         });
         PlayScene.getViewPile5().setOnMouseClicked((event) -> {
             System.out.println("Pile 5 clicked");
             Integer fromLane = PlayScene.getCurrentLaneInt();
-            if (fromLane == 0) {
-                PlayScene.moveToPile(5);
-                urnBrick = new Brick(0);
-                PlayScene.changeCurrentbrick(urnBrick.getValue());
-                PlayScene.updateDispSelection();
-            } else {
-                PlayScene.moveToPile(5);
-            }
-            if (PlayScene.logic.checkWin() == true) {
-                PlayScene.Selection.setText("YOU WIN !");
-                System.out.println("WIN WIN WIN");
+            if (true == PlayScene.logic.isPileMoveLegal(5)) {
+                if (fromLane == 0) {
+                    PlayScene.moveToPile(5);
+                    urnBrick = new Brick(0);
+                    PlayScene.changeCurrentbrick(urnBrick.getValue());
+                    PlayScene.updateDispSelection();
+                } else {
+                    PlayScene.moveToPile(5);
+                }
+                if (PlayScene.logic.checkWin() == true) {
+                    PlayScene.winDialog();
+                    System.out.println("WIN WIN WIN");
+                }
             }
         });
         PlayScene.getViewPile6().setOnMouseClicked((event) -> {
             System.out.println("Pile 6 clicked");
             Integer fromLane = PlayScene.getCurrentLaneInt();
-            if (fromLane == 0) {
-                PlayScene.moveToPile(6);
-                urnBrick = new Brick(0);
-                PlayScene.changeCurrentbrick(urnBrick.getValue());
-                PlayScene.updateDispSelection();
-            } else {
-                PlayScene.moveToPile(6);
-            }
-            if (PlayScene.logic.checkWin() == true) {
-                PlayScene.Selection.setText("YOU WIN !");
-                System.out.println("WIN WIN WIN");
+            if (true == PlayScene.logic.isPileMoveLegal(6)) {
+                if (fromLane == 0) {
+                    PlayScene.moveToPile(6);
+                    urnBrick = new Brick(0);
+                    PlayScene.changeCurrentbrick(urnBrick.getValue());
+                    PlayScene.updateDispSelection();
+                } else {
+                    PlayScene.moveToPile(6);
+                }
+                if (PlayScene.logic.checkWin() == true) {
+                    PlayScene.winDialog();
+                    System.out.println("WIN WIN WIN");
+
+                }
             }
         });
 
@@ -340,6 +346,7 @@ public class Game extends Application {
             System.out.println("Number of moves made: " + PlayScene.logic.getMovesMade());
             //System.out.println("Urn");
             //System.out.println(Urn.toString());
+            PlayScene.saveGame(Urn, urnBrick);
         });
 
         GameWindow.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -478,9 +485,6 @@ public class Game extends Application {
         Window.setScene(MainMenu);
 
         Window.show();
-    }
-
-    public void newGame() {
 
     }
 

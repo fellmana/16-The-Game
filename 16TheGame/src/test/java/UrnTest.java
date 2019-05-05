@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
 import javafx.embed.swing.JFXPanel;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,45 +33,32 @@ public class UrnTest {
 
     @Test
     public void UrnInitializationGivesRightAmountOfBricks() {
-        urn.InitializeUrn();
+        urn.initializeUrn();
         assertEquals(96, urn.getLength());
     }
 
     @Test
     public void UrnDrawReducesAmount() {
-        urn.InitializeUrn();
+        urn.initializeUrn();
         urn.draw();
         assertEquals(95, urn.getLength());
     }
 
     @Test
     public void UrnDrawGivesABrick() {
-        urn.InitializeUrn();
+        urn.initializeUrn();
         Brick b = urn.draw();
         assertNotEquals(null, b);
     }
-
+    
     @Test
-    public void UrnToStringGivesCorrect() {
-        urn.InitializeUrn();
-        String str = "1, 1, 1, 1, 1, 1, "
-                + "2, 2, 2, 2, 2, 2, "
-                + "3, 3, 3, 3, 3, 3, "
-                + "4, 4, 4, 4, 4, 4, "
-                + "5, 5, 5, 5, 5, 5, "
-                + "6, 6, 6, 6, 6, 6, "
-                + "7, 7, 7, 7, 7, 7, "
-                + "8, 8, 8, 8, 8, 8, "
-                + "9, 9, 9, 9, 9, 9, "
-                + "10, 10, 10, 10, 10, 10, "
-                + "11, 11, 11, 11, 11, 11, "
-                + "12, 12, 12, 12, 12, 12, "
-                + "13, 13, 13, 13, 13, 13, "
-                + "14, 14, 14, 14, 14, 14, "
-                + "15, 15, 15, 15, 15, 15, "
-                + "16, 16, 16, 16, 16, 16, ";
-
-        assertEquals(str, urn.toString());
+    public void LoadUrnAddsBrickToUrn() {
+        ArrayList<Integer> lst = new ArrayList<>();
+        lst.add(1);
+        urn.loadUrn(lst);
+        assertEquals(1,urn.getBricks().get(0).getValue());
     }
+
+   
 
 }

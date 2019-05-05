@@ -69,6 +69,11 @@ public class LaneTest {
         assertEquals(false,lane.printLane());
     }
     
+    @Test
+    public void LaneToStringGivesCorrect() {
+        lane.addBrick(new Brick(1));
+        assertEquals("1 ",lane.toString());
+    }
 
 
     // TODO add test methods here.

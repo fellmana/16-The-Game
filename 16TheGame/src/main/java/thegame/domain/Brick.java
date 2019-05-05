@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- *
+ * Basic game element that extend Button class for functionality
  * @author afellman
  */
 public class Brick extends Button {
@@ -32,6 +32,7 @@ public class Brick extends Button {
         img.setFitWidth(80 * 0.8);
         super.setGraphic(img);
     }
+    
     
     public void setLanenum(int lanenum) {
         this.lanenum = lanenum;

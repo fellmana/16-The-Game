@@ -5,7 +5,6 @@
  */
 package thegame.logic;
 
-import com.sun.org.apache.bcel.internal.generic.L2D;
 import java.util.ArrayList;
 import thegame.domain.Brick;
 import thegame.domain.Lane;
@@ -13,6 +12,7 @@ import thegame.domain.Urn;
 
 /**
  * Define Game logic and lane selection
+ *
  * @author afellman
  */
 public class Gamelogic {
@@ -35,6 +35,9 @@ public class Gamelogic {
         return movesMade;
     }
 
+    /**
+     * Increments number of moves played.
+     */
     public void incrementMovesMade() {
         this.movesMade += 1;
     }
@@ -53,6 +56,20 @@ public class Gamelogic {
 
     public Lane getPile4() {
         return pile4;
+    }
+
+    public void setUrn(ArrayList<Integer> lst) {
+        Urn nurn = new Urn();
+        nurn.loadUrn(lst);
+        this.urn = nurn;
+    }
+
+    public Urn getUrn() {
+        return urn;
+    }
+
+    public void setMovesMade(int movesMade) {
+        this.movesMade = movesMade;
     }
 
     public Lane getPile5() {
@@ -85,11 +102,13 @@ public class Gamelogic {
         movesMade = 0;
 
     }
-    
-    public void updateCurrentSelection(Lane sel) {
-        selection = sel;
-    }
 
+    /**
+     * Add given brick to given lane(n).
+     *
+     * @param b
+     * @param n
+     */
     public void addToLane(Brick b, Integer n) {
         if (null == n) {
             lane4.addBrick(b);
@@ -110,10 +129,12 @@ public class Gamelogic {
             }
         }
     }
+
     /**
-     *  Chose a lane to clear. 
-     *  Clearing means that it creates new empty ArrayList to bricks.
-     * @param n 
+     * Chose a lane to clear Clearing means that it creates new empty ArrayList
+     * to bricks.
+     *
+     * @param n
      */
     public void clearLane(Integer n) {
         if (null == n) {
@@ -135,59 +156,23 @@ public class Gamelogic {
             }
         }
     }
-    
-    /**
-     * Add selection to lane, give selection and lane to add to.
-     * @param sel
-     * @param n 
-     */
-    
-    public void addToLane(Lane sel, Integer n) {
-        if (null == n) {
-            for (int i = 0; i < sel.getLength(); i++) {
-                lane4.addBrick(sel.getBricks().get(i));
-            }
-        } else {
-            switch (n) {
-                case 1:
-                    for (int i = 0; i < sel.getLength(); i++) {
-                        lane1.addBrick(sel.getBricks().get(i));
-                    }
-                    break;
-                case 2:
-                    for (int i = 0; i < sel.getLength(); i++) {
-                        lane2.addBrick(sel.getBricks().get(i));
-                    }
-                    break;
-                case 3:
-                    for (int i = 0; i < sel.getLength(); i++) {
-                        lane3.addBrick(sel.getBricks().get(i));
-                    }
-                    break;
-                default:
-                    for (int i = 0; i < sel.getLength(); i++) {
-                        lane4.addBrick(sel.getBricks().get(i));
-                    }
-                    break;
-            }
-        }
-    }
 
     /**
      * Grab a new selection and make it the current selection.
+     *
      * @param lanenbr
-     * @param index 
+     * @param index
      */
     public void updateSelectionFromLane(Integer lanenbr, Integer index) {
         this.selection = grabSelection(lanenbr, index);
     }
-    
-    /**
-     *  Checks if the bricks are in order, if they are the selection is valid.
-     * @param sel
-     * @return 
-     */
 
+    /**
+     * Checks if the bricks are in order, if they are the selection is valid.
+     *
+     * @param sel
+     * @return
+     */
     public Boolean isSelectionValid(Lane sel) {
         Integer prev = sel.getBricks().get(0).getValue();
         for (int i = 1; i < sel.getLength(); i++) {
@@ -203,15 +188,22 @@ public class Gamelogic {
         return true;
     }
 
+    /**
+     * Hard set given bricks as current selection.
+     *
+     * @param b
+     */
     public void setSelection(Brick b) {
         selection.initBricks(new ArrayList<>());
         selection.addBrick(b);
     }
+
     /**
-     * 
+     * Selects bricks on the basis of given lane and index in given lane.
+     *
      * @param lanenbr
      * @param n
-     * @return 
+     * @return
      */
     public Lane grabSelection(Integer lanenbr, Integer n) {
         ArrayList<Brick> temp = new ArrayList<>();
@@ -238,7 +230,7 @@ public class Gamelogic {
         }
         if (lanenbr == 2) {
             System.out.println("Chosen Lane: Lane 2");
-            System.out.println("Chosen Lane Number of Bricks: " 
+            System.out.println("Chosen Lane Number of Bricks: "
                     + lane2.getLength());
             for (int i = n; i <= lane2.getLength() - 1; i++) {
                 if (lane2.getBricks().get(i - 1).getValue() == lane2.getBricks()
@@ -308,6 +300,12 @@ public class Gamelogic {
         return this.selection;
     }
 
+    /**
+     * More convenient getter for lane selection.
+     *
+     * @param n
+     * @return
+     */
     public Lane getLane(Integer n) {
         if (null != n) {
             switch (n) {
@@ -326,6 +324,11 @@ public class Gamelogic {
         return lane1;
     }
 
+    /**
+     * Delete selection from given lane.
+     *
+     * @param n
+     */
     public void deleteFromLane(Integer n) {
         if (n == 1) {
             Integer nRemoves = selection.getLength();
@@ -370,6 +373,11 @@ public class Gamelogic {
         }
     }
 
+    /**
+     * Chose lane to which the selection is added.
+     *
+     * @param toLane
+     */
     public void addSelectionToLane(Integer toLane) {
         if (toLane == 1) {
             for (int i = 0; i < selection.getLength(); i++) {
@@ -397,6 +405,65 @@ public class Gamelogic {
         }
     }
 
+    /**
+     * Check if move between pile(n) and selection is legal.
+     *
+     * @param n
+     * @return
+     */
+    public boolean isPileMoveLegal(Integer n) {
+        int finval = selection.getBricks().get(selection.getLength() - 1).getValue();
+        if (n == 1) {
+            if (finval == pile1.getBricks().get(pile1.getLength() - 1).getValue() + 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (n == 2) {
+            if (finval == pile2.getBricks().get(pile2.getLength() - 1).getValue() + 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (n == 3) {
+            if (finval == pile3.getBricks().get(pile3.getLength() - 1).getValue() + 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (n == 4) {
+            if (finval == pile4.getBricks().get(pile4.getLength() - 1).getValue() + 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (n == 5) {
+            if (finval == pile5.getBricks().get(pile5.getLength() - 1).getValue() + 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (n == 6) {
+            if (finval == pile6.getBricks().get(pile6.getLength() - 1).getValue() + 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Check if the move between given lane(n) and selection is Legal.
+     *
+     * @param n
+     * @return
+     */
     public boolean isMoveLegal(Integer n) {
         if (n == 1) {
             int firstInSelection = selection.getBricks().get(0).getValue();
@@ -471,22 +538,29 @@ public class Gamelogic {
         }
         return false;
     }
+
     /**
      * Check if win condition is met.
-     * @return 
+     *
+     * @return
      */
     public boolean checkWin() {
         if (pile1.getBricks().get(pile1.getLength() - 1).getValue() != 16) {
             return false;
-        } else if (pile2.getBricks().get(pile2.getLength() - 1).getValue() != 16) {
+        } else if (pile2.getBricks().get(pile2.getLength() - 1)
+                .getValue() != 16) {
             return false;
-        } else if (pile3.getBricks().get(pile3.getLength() - 1).getValue() != 16) {
+        } else if (pile3.getBricks().get(pile3.getLength() - 1)
+                .getValue() != 16) {
             return false;
-        } else if (pile4.getBricks().get(pile4.getLength() - 1).getValue() != 16) {
+        } else if (pile4.getBricks().get(pile4.getLength() - 1)
+                .getValue() != 16) {
             return false;
-        } else if (pile5.getBricks().get(pile5.getLength() - 1).getValue() != 16) {
+        } else if (pile5.getBricks().get(pile5.getLength() - 1)
+                .getValue() != 16) {
             return false;
-        } else if (pile6.getBricks().get(pile6.getLength() - 1).getValue() != 16) {
+        } else if (pile6.getBricks().get(pile6.getLength() - 1)
+                .getValue() != 16) {
             return false;
         }
         System.out.println("YOU WIN");

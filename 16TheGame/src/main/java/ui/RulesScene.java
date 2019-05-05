@@ -5,13 +5,14 @@
  */
 package ui;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import javafx.scene.control.Button;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
-import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
@@ -25,6 +26,7 @@ import javafx.scene.layout.VBoxBuilder;
 public class RulesScene {
 
     Button BackToMenuButton2;
+    TextArea textArea;
 
     public RulesScene() {
         this.BackToMenuButton2 = new Button("Main Menu");
@@ -34,9 +36,9 @@ public class RulesScene {
         return BackToMenuButton2;
     }
 
-    public BorderPane BuildScene() {
+    public BorderPane BuildScene() throws IOException {
 
-        final TextArea textArea = TextAreaBuilder.create()
+        textArea = TextAreaBuilder.create()
                 .prefWidth(400)
                 .wrapText(true)
                 .build();
@@ -58,11 +60,30 @@ public class RulesScene {
         RulesWindow.setCenter(vBox);
         RulesWindow.setMargin(BackToMenuButton2, new Insets(5, 5, 5, 5));
         RulesWindow.setMargin(vBox, new Insets(10, 10, 10, 10));
+        loadText();
 
         return RulesWindow;
     }
 
-    public void loadText() {
+    public void loadText() throws FileNotFoundException, IOException{
+        ClassLoader classLoader = new RulesScene().getClass().getClassLoader();
+ 
+        File file = new File(classLoader.getResource("rules.md").getFile());
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        try {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+            while (line != null) {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+            }
+            String everything = sb.toString();
+            textArea.setText(everything);
+        } finally {
+            br.close();
+        }
 
     }
 }
