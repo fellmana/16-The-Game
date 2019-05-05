@@ -18,3 +18,6 @@ Päivä | aika | Mitä tein
 20.4 | 4 | Suuria edistyksiä pelin toiminnassa, :)
 21.4 | 6 | Ensimmäinen pelattava versio, joka toimii kaikki peruspelisäännöt toteutettu 
 25.4 | 3 | JUNIT testi oli ihan rikki hetken korjaus onnistui (`new JFXPanel();`)
+3.5 | 3 | Bugien korjailua ja save ja load game ominaisuuden toteutus
+4.5 | 3 | Koodin siistiminen ja testaus + java docs
+
