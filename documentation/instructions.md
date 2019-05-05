@@ -1,5 +1,10 @@
 # Application Instruction
 
+Download jar 
+
+to run the porogram run command 
+`java -jar 16TheGame.jar`
+
 ## Menu
 In the main menu that open initialy you can chose between four different options
 1. New Game
@@ -16,6 +21,10 @@ In the game window we have several different options. On the top there is the  o
 Also in the top we have a label that keeps track of how many bricks there are in the urn.
 Under the top options there is the 'Draw' button that draws from the urn the drawn brick is displayed on the side of 'draw' button.
 In the middle of the gamewindow we have the 4 different lanes above each lane the is a 'add' button this button adds the currently selected bricks to the lane if it is allowed. On the right of the lanes the currently selected bricks are displayed. 
+
+## Making moves
+
+To make a move you have to have a brick(s) selected. You can see your selected bricks under the selected bricks label. Once you have selected the bricks you what to move you can move the selection to another lane by pressing the add button or the corresponding hotkey. To add to the pile on top you just click on the pile and the move is made if legal.
 
 
 ## Hot keys
